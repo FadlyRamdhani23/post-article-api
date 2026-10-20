@@ -32,7 +32,7 @@ func CreatePost(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "gagal membuat post"})
 		return
 	}
-	c.JSON(http.StatusCreated, gin.H{})
+	c.JSON(http.StatusCreated, gin.H{"message": "article berhasil dibuat"})
 }
 
 func GetPosts(c *gin.Context) {
@@ -120,7 +120,7 @@ func UpdatePost(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "article tidak ditemukan"})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{})
+	c.JSON(http.StatusOK, gin.H{"message": "article berhasil diperbarui"})
 }
 
 func DeletePost(c *gin.Context) {
@@ -139,7 +139,7 @@ func DeletePost(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "article tidak ditemukan"})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{})
+	c.JSON(http.StatusOK, gin.H{"message": "article berhasil dihapus"})
 }
 
 func validatePost(p models.Post) map[string]string {

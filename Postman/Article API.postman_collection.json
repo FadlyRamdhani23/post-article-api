@@ -1,0 +1,117 @@
+{
+  "info": {
+    "_postman_id": "a27f64fd-bde9-488e-9116-534b76ec9324",
+    "name": "Article API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "57199029",
+    "_collection_link": "https://go.postman.co/collection/57199029-a27f64fd-bde9-488e-9116-534b76ec9324?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create Article",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "postman-echo.com/post",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    },
+    {
+      "name": "Get Articles (paging)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Get Article by ID",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Update Article",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Pemanfaatan Cloud Computing bagi Pelaku UMKM\",\n  \"content\": \"Komputasi awan memungkinkan pelaku usaha kecil menggunakan infrastruktur teknologi tanpa harus membeli perangkat mahal. Penyimpanan data, aplikasi kasir, hingga layanan pelanggan dapat diakses dari mana saja dengan biaya yang mengikuti kebutuhan. Langkah awal yang bijak adalah memilih penyedia layanan yang andal, memahami kebijakan keamanan data, dan memulai dari kebutuhan yang paling mendesak.\",\n  \"category\": \"Teknologi\",\n  \"status\": \"thrash\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/article/10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "article",
+            "10"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Article",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Create Article - Validasi Gagal",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}
