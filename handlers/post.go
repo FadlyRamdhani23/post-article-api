@@ -83,3 +83,32 @@ func GetPost(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, p)
 }
+
+func UpdatePost(c *gin.Context) {
+
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "id harus angka"})
+		return
+	}
+
+	var input models.Post
+	if err := c.ShouldBindJSON(&input); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "format JSON tidak valid"})
+		return
+	}
+
+	query := "UPDATE posts SET title = ?, content = ?, category = ?, status = ? WHERE id = ?"
+	result, err := database.DB.Exec(query, input.Title, input.Content, input.Category, input.Status, id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "gagal memperbarui post"})
+		return
+	}
+
+	affected, _ := result.RowsAffected()
+	if affected == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"error": "article tidak ditemukan"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{})
+}
