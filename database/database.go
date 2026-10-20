@@ -10,7 +10,7 @@ import (
 var DB *sql.DB
 
 func Connect() {
-	dsn := "root:@tcp(127.0.0.1:3306)/post_article?parseTime=true&clientFoundRows=true"
+	dsn := "root:@tcp(127.0.0.1:3306)/article?parseTime=true&clientFoundRows=true"
 
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
