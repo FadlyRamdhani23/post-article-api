@@ -15,5 +15,6 @@ func main() {
 	r.GET("/article/:id/:offset", handlers.GetPosts)
 	r.GET("/article/:id", handlers.GetPost)
 	r.PUT("/article/:id", handlers.UpdatePost)
+	r.DELETE("/article/:id", handlers.DeletePost)
 	r.Run(":8080")
 }
