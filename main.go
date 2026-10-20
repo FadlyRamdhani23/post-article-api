@@ -12,6 +12,7 @@ func main() {
 
 	r := gin.Default()
 	r.POST("/article/", handlers.CreatePost)
-
+	r.GET("/article/:id/:offset", handlers.GetPosts)
+	r.GET("/article/:id", handlers.GetPost)
 	r.Run(":8080")
 }
